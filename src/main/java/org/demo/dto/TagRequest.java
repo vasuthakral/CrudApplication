@@ -1,0 +1,16 @@
+package org.demo.dto;
+
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class TagRequest {
+    @NotBlank
+    @Size(min = 1, max = 100, message = "Tag name must be between 1 and 100 characters")
+    private String name;
+}
