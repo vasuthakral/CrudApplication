@@ -14,5 +14,6 @@ public class UserResponse {
     private String name;
     private Integer age;
     private List<PostResponse> posts;
+    private ProfileResponse profile;
 }
 

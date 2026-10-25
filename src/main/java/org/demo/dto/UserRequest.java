@@ -26,4 +26,7 @@ public class UserRequest {
 
     // Optional: if provided, posts will be created along with the user
     private List<@Valid PostRequest> posts;
+
+    @Valid
+    private ProfileRequest profile;
 }

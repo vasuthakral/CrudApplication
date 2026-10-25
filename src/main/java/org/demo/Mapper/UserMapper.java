@@ -7,11 +7,13 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
 
-@Mapper(componentModel = MappingConstants.ComponentModel.SPRING, uses = PostMapper.class)
+@Mapper(componentModel = MappingConstants.ComponentModel.SPRING,
+        uses = {PostMapper.class, ProfileMapper.class})
 public interface UserMapper {
 
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "posts", ignore = true)
+    @Mapping(target = "profile", ignore = true)
     User toUser(UserRequest userRequest);
 
     UserResponse toUserResponse(User user);

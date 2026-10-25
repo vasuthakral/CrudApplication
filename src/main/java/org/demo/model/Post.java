@@ -18,6 +18,8 @@ public class Post {
     private Integer id;
     private String title;
     private String content;
+
+    @Column(name = "created_at")
     private LocalDateTime createdAt = LocalDateTime.now();
 
     @ManyToOne
@@ -26,8 +28,13 @@ public class Post {
     @EqualsAndHashCode.Exclude
     private User user;
 
-    // only in JPA and no such thing in database
-    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
+    // This table is automatically created
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(
+            name = "post_tags",
+            joinColumns = @JoinColumn(name = "post_id"),
+            inverseJoinColumns = @JoinColumn(name = "tag_id")
+    )
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     private List<Tag> tags;

@@ -3,6 +3,8 @@ package org.demo.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -15,11 +17,10 @@ public class Tag {
     private Integer id;
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name = "post_id")
+    @ManyToMany(mappedBy = "tags")
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    private Post post;
+    private List<Post> posts;
 
     public Tag(Integer id, String name) {
         this.id = id;

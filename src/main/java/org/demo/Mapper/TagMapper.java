@@ -10,10 +10,8 @@ import org.mapstruct.MappingConstants;
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface TagMapper {
     @Mapping(target = "id", ignore = true)
-    @Mapping(target = "post", ignore = true)
+    @Mapping(target = "posts", ignore = true)
     Tag toTag(TagRequest tagRequest);
 
-
-    // TagResponse do not have post{they are ignored from source}
     TagResponse toTagResponse(Tag tag);
 }
